@@ -1,0 +1,14 @@
+.coverimage{
+    height: 300px;
+    width: auto;
+    padding: auto;
+    margin-left: auto;
+    margin-right: auto
+}
+.card .card-content {
+    padding: 9px;
+    padding-top: 3px;
+}
+.rowmargin{
+    margin-bottom: 5px;
+}

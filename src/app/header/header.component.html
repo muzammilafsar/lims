@@ -1,0 +1,20 @@
+<nav>
+  <div class="nav-wrapper">
+    <a a routerLink="" class="brand-logo center">Library</a>
+    <ul id="nav-mobile" class="left hide-on-med-and-down" >
+        <li><a routerLink="">Home</a></li>
+        <li><a routerLink="admin">Admin</a></li>
+       
+      </ul>
+    <ul id="nav-mobile" class="right hide-on-med-and-down" >
+        <li *ngIf="!logged_in$"><a (click)="signin()">SignIn</a></li>
+        <li><a href="">Borrowed Books</a></li>
+        <li *ngIf="logged_in$"><img class="userimage" [src]="userData$.image" alt=""></li>
+        <li *ngIf="logged_in$"><a class="dropdown-trigger" href='#' data-target='dropdown1'>My Account</a></li>
+        <ul id='dropdown1' class='dropdown-content' >
+            <li><a (click)="logout()">Logout</a></li>
+          </ul>
+      </ul>
+    </div>
+ 
+</nav>
