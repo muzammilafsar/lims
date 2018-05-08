@@ -2,6 +2,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomepageComponent } from './main/homepage/homepage.component';
 import { NgModule } from '@angular/core';
 import { HomeComponent } from './admin/home/home.component';
+import { hostElement } from '@angular/core/src/render3/instructions';
+import { AddbookComponent } from './admin/addbook/addbook.component';
 
 const routes: Routes = [
     {
@@ -10,7 +12,13 @@ const routes: Routes = [
     },
     {
         path: 'admin',
-        component: HomeComponent
+        component: HomeComponent,
+        children: [
+            {
+                path: 'addbook',
+                component: AddbookComponent
+            }
+        ]
     }
 ];
 @NgModule({

@@ -1,0 +1,92 @@
+<div class="col m4 s12">
+<form [formGroup]="bookForm">
+  <div class="input-field ">
+    <input value="" id="title" type="text" class="validate" formControlName="title" required>
+    <label class="active" for="title">Title</label>
+  </div>
+  <div class="input-field">
+    <input value="" id="author" type="text" class="validate"formControlName="author" required>
+    <label class="active" for="author">Author Name</label>
+  </div>
+  <div class="input-field ">
+    <input value="" id="description" type="text" class="validate" formControlName="description" required>
+    <label class="active" for="description">Description</label>
+  </div>
+  <div class="input-field ">
+    <input value="" id="isbn" type="text" class="validate" formControlName="isbn" required>
+    <label class="active" for="isbn">ISBN</label>
+  </div>
+  <div class="input-field ">
+    <input value="" id="image" type="text" class="validate" formControlName="image" required> 
+    <label class="active" for="image">Image Url</label>
+  </div>
+  <div class="input-field ">
+    <input value="" id="copies" type="number" class="validate" formControlName="no_of_copies" required>
+    <label class="active" for="copies">Total copies</label>
+  </div>
+  <button class="btn center-align" (click)="addBook()">Add Book</button>
+
+</form>
+</div>
+<div class="col s12 m8">
+  <table>
+      <thead>
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Actions</th>
+        </tr>
+      </thead>
+  
+      <tbody>
+          <tr>
+              <td><input type="text" placeholder="Search By Title" [(ngModel)]="searchTitle"></td>
+              <td><input type="text" placeholder="Search By Author" [(ngModel)]="searchAuthor"></td>
+              <td></td>
+            </tr>
+        <tr *ngFor="let book of allbooks | filter: searchTitle :searchAuthor">
+          <td>{{book.title}}</td>
+          <td>{{book.author}}</td>
+          <td><button class="btn" style="margin-right: 5px " (click)="editbook(book._id)">Edit</button>
+            <button class="btn" (click)="deletebook(book._id)">Remove</button></td>
+        </tr>
+       
+      </tbody>
+    </table>
+</div>
+<div id="modal1" class="modal modal-fixed-footer">
+  <div class="modal-content">
+    <h4>Update</h4>
+    <form [formGroup]="updateForm">
+      <div class="input-field ">
+        <input value="" id="title" type="text" class="validate" formControlName="title" placeholder="Title" required>
+       
+      </div>
+      <div class="input-field">
+        <input value="" id="author" type="text" class="validate"formControlName="author" placeholder="Author" required>
+    
+      </div>
+      <div class="input-field ">
+        <input value="" id="description" type="text" class="validate" formControlName="description" placeholder="Description" required>
+        
+      </div>
+      <div class="input-field ">
+        <input value="" id="isbn" type="text" class="validate" formControlName="isbn" placeholder="ISBN" required>
+     
+      </div>
+      <div class="input-field ">
+        <input value="" id="image" type="text" class="validate" formControlName="image" placeholder="Image URl" required> 
+     
+      </div>
+      <div class="input-field ">
+        <input value="" id="copies" type="number" class="validate" formControlName="no_of_copies" placeholder="No of copies" required>
+      
+      </div>
+      
+    
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button (click)="updateBook()" class="modal-close waves-effect waves-green btn-flat">Update</button>
+  </div>
+</div>

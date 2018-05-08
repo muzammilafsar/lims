@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { HttpClientModule } from '@angular/common/http';
 import {RouterModule} from '@angular/router';
 import { AppComponent } from './app.component';
 import {
@@ -46,6 +46,7 @@ export function getAuthServiceConfigs() {
     MainModule,
     AdminModule,
     FormsModule,
+    HttpClientModule
   ],
   providers: [
     {
@@ -53,6 +54,9 @@ export function getAuthServiceConfigs() {
       useFactory: getAuthServiceConfigs
     }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: [
+    FormsModule
+  ]
 })
 export class AppModule { }

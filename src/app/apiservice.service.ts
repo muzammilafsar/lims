@@ -6,21 +6,22 @@ import {
   FacebookLoginProvider,
   GoogleLoginProvider,
 } from 'angular5-social-login';
+import { HttpClient } from '@angular/common/http';
 @Injectable()
 export class ApiserviceService {
   userdata: any;
   logged_in = false;
-  constructor(private http: Http,
+  constructor(private http: HttpClient,
   private socialAuthService: AuthService) { }
 
   getAllBooks() {
-    return this.http.get('https://api.myjson.com/bins/o0y17').map((val) => {
+    return this.http.get('http://limserver.herokuapp.com/allbooks').map((val) => {
       console.log(val);
-      return val.json();
+      return val['books'];
     });
   }
   setUserData() {
-    let data = JSON.parse(localStorage.getItem('auth'));
+    const data = JSON.parse(localStorage.getItem('auth'));
     if (data) {
       this.userdata = data;
       this.logged_in = true;
@@ -52,5 +53,15 @@ export class ApiserviceService {
         // window.location.reload();
       }
     );
+  }
+  addBook(data) {
+    console.log(data);
+    return this.http.post('http://limserver.herokuapp.com/addbook', data);
+  }
+  deleteBook(id) {
+    return this.http.post('http://limserver.herokuapp.com/deletebook', {id: id});
+  }
+  updateBook(body) {
+    return this.http.post('http://limserver.herokuapp.com/updatebook', body);
   }
 }

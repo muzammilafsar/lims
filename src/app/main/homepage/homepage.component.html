@@ -24,7 +24,8 @@
           </div>
           <div class="row" style="margin-top: 10px;margin-bottom: 2px !important">
             <div class="col">
-              <button class="btn left-align" style="margin-left: 10px">Borrow</button>
+              <button *ngIf="book.available_copies > 0" class="btn left-align" style="margin-left: 10px">Borrow</button>
+              <button *ngIf="book.available_copies === 0" class="btn left-align" style="margin-left: 10px" disabled>Not Available</button>
             </div>
             <div class="col">
               <button class="btn right-align">Details</button>

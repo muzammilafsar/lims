@@ -1,15 +1,30 @@
 import { Component, OnInit } from '@angular/core';
-
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { ApiserviceService } from '../../apiservice.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
-  constructor() { }
+  bookForm: FormGroup;
+  constructor(private apiService: ApiserviceService) { }
 
   ngOnInit() {
+    this.bookForm = new FormGroup({
+      title: new FormControl('', [Validators.required]),
+      author: new FormControl('', [Validators.required]),
+      description: new FormControl('', [Validators.required]),
+      isbn: new FormControl('', [Validators.required]),
+      no_of_copies: new FormControl('', [Validators.required]),
+      image: new FormControl('', [Validators.required]),
+    });
+  }
+  addBook() {
+    if (this.bookForm.valid) {
+      console.log(this.bookForm.value);
+      this.apiService.addBook( this.bookForm.value );
+    }
   }
 
 }
