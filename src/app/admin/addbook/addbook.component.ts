@@ -14,6 +14,7 @@ export class AddbookComponent implements OnInit {
   updateForm: FormGroup;
   updateid;
   searchTitle = '';
+  addbtnDisable = false;
   constructor(private apiService: ApiserviceService) { }
 
   ngOnInit() {
@@ -53,6 +54,7 @@ export class AddbookComponent implements OnInit {
       this.apiService.addBook( this.bookForm.value ).subscribe(val => {
         if (val['status'] === 200 ) {
           this.getAllBooks();
+
         }
             });
     }

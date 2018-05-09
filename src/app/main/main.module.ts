@@ -6,6 +6,7 @@ import {RouterModule} from '@angular/router';
 import { ApiserviceService } from '../apiservice.service';
 import { CustomepipesModule } from '../customepipes/customepipes.module';
 import { FilterPipe } from '../customepipes/search.pipe';
+import { BorrowedComponent } from './borrowed/borrowed.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -13,6 +14,6 @@ import { FilterPipe } from '../customepipes/search.pipe';
     CustomepipesModule
   ],
   providers: [ApiserviceService  ],
-  declarations: [HomepageComponent, ]
+  declarations: [HomepageComponent, BorrowedComponent, ]
 })
 export class MainModule { }

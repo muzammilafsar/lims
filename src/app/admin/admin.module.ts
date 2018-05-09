@@ -5,6 +5,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AddbookComponent } from './addbook/addbook.component';
 import {  Routes, RouterModule } from '@angular/router';
 import { CustomepipesModule } from '../customepipes/customepipes.module';
+import { AllborrowedComponent } from './allborrowed/allborrowed.component';
 
 const routes: Routes = [
   {
@@ -20,6 +21,6 @@ const routes: Routes = [
     FormsModule,
     CustomepipesModule
   ],
-  declarations: [HomeComponent, AddbookComponent]
+  declarations: [HomeComponent, AddbookComponent, AllborrowedComponent]
 })
 export class AdminModule { }

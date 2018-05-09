@@ -18,6 +18,9 @@ export class HomepageComponent implements OnInit {
   constructor(private apiService: ApiserviceService) { }
 
   ngOnInit() {
+  this.getAll();
+  }
+  getAll() {
     this.apiService.getAllBooks().subscribe(val => {
       console.log(val);
       this.books = val;
@@ -33,5 +36,10 @@ export class HomepageComponent implements OnInit {
     };
     this.category[`${id}`] = true;
   }
-
+  borrowBook(id) {
+    this.apiService.borrowBook(id).subscribe(val => {
+      console.log(val);
+      this.getAll();
+    });
+  }
 }

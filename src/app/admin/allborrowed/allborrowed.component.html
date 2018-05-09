@@ -1,0 +1,30 @@
+
+  <table>
+      <thead>
+        <tr>
+            <th>User</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Issue Date</th>
+            <th>Due Date</th>
+            <th>Return Date</th>
+        </tr>
+      </thead>
+  
+      <tbody>
+          <tr><td><input type="text" placeholder="Search By Title" [(ngModel)]="searchUser"></td>
+              <td><input type="text" placeholder="Search By Title" [(ngModel)]="searchTitle"></td>
+              <td><input type="text" placeholder="Search By Author" [(ngModel)]="searchAuthor"></td>
+              <td></td>
+            </tr>
+        <tr *ngFor="let book of allborrow | filter: searchTitle :searchAuthor">
+          <td>{{book.user}}</td>
+          <td>{{book.title}}</td>
+          <td>{{book.author}}</td>
+          <td>{{book.issue_date | date}}</td>
+          <td>{{book.Due_date | date}}</td>
+          <td>{{book.Return_date | date}}</td>
+        </tr>
+       
+      </tbody>
+    </table>

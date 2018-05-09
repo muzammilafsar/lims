@@ -35,6 +35,8 @@ export class ApiserviceService {
 
     this.socialAuthService.signOut().catch(err => {
       console.log(err);
+      localStorage.clear();
+      window.location.reload();
     });
   }
   public socialSignIn(socialPlatform: string) {
@@ -50,7 +52,7 @@ export class ApiserviceService {
         localStorage.setItem('auth', JSON.stringify(userData));
         // Now sign-in with userData
         // ...?
-        // window.location.reload();
+        window.location.reload();
       }
     );
   }
@@ -63,5 +65,28 @@ export class ApiserviceService {
   }
   updateBook(body) {
     return this.http.post('http://limserver.herokuapp.com/updatebook', body);
+  }
+  borrowBook(id) {
+    const body = {
+      email : this.userdata['email'],
+      bookid : id
+    };
+    return this.http.post('http://limserver.herokuapp.com/borrowbook' , body);
+  }
+  userBooks() {
+    const body = {
+      email : this.userdata['email']
+    };
+    return this.http.post('http://limserver.herokuapp.com/userbooks' , body);
+  }
+  returnBook(id) {
+    const body = {
+      id: id
+    };
+    return this.http.post('http://limserver.herokuapp.com/returnbook', body );
+
+  }
+  allBorrowedBooks() {
+    return this.http.get('http://limserver.herokuapp.com/getallborrowedbooks');
   }
 }

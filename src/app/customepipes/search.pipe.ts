@@ -15,7 +15,7 @@ let result = items.filter( it => {
       }
       return it.title.toLowerCase().includes(searchTitle);
     });
-    // console.log(result);
+    console.log(result);
     // result.filter(val => {
     //   console.log(val);
     //   return true;
