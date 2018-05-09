@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiserviceService } from '../../apiservice.service';
 import { Http, Response } from '@angular/http';
+import * as M from 'materialize-css';
 @Component({
   selector: 'app-homepage',
   templateUrl: './homepage.component.html',
@@ -8,6 +9,7 @@ import { Http, Response } from '@angular/http';
 })
 export class HomepageComponent implements OnInit {
   books ;
+  borrowBtnDisabled = false;
   category = {
     all: true,
     tech: false,
@@ -37,8 +39,19 @@ export class HomepageComponent implements OnInit {
     this.category[`${id}`] = true;
   }
   borrowBook(id) {
+    this.borrowBtnDisabled = true;
     this.apiService.borrowBook(id).subscribe(val => {
       console.log(val);
+      this.borrowBtnDisabled = false;
+      if (val['status'] === 200) {
+        M.toast({html: 'Borrowed Successfully'});
+      }
+      if (val['status'] === 500) {
+        M.toast({html: 'You already have this Book issued'});
+      }
+      if (val['status'] === 502) {
+        M.toast({html: 'You cannot have more than 5 borrowed book'});
+      }
       this.getAll();
     });
   }

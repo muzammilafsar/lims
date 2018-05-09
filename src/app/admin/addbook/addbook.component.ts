@@ -15,6 +15,8 @@ export class AddbookComponent implements OnInit {
   updateid;
   searchTitle = '';
   addbtnDisable = false;
+  delbtnDisable = false;
+  editbtnDisable = false;
   constructor(private apiService: ApiserviceService) { }
 
   ngOnInit() {
@@ -49,17 +51,21 @@ export class AddbookComponent implements OnInit {
     });
   }
   addBook() {
+    this.addbtnDisable = true;
     if (this.bookForm.valid) {
       console.log(this.bookForm.value);
       this.apiService.addBook( this.bookForm.value ).subscribe(val => {
         if (val['status'] === 200 ) {
           this.getAllBooks();
-
+          M.toast({html: 'Added Successfully'});
+          this.bookForm.reset();
+          this.addbtnDisable = false;
         }
-            });
+      });
     }
   }
   editbook(id) {
+    this.editbtnDisable = true;
     const book = this.allbooks.find(val => {
       return val._id === id;
     });
@@ -79,9 +85,12 @@ export class AddbookComponent implements OnInit {
     }
   }
   deletebook(id) {
+    this.delbtnDisable = true;
     this.apiService.deleteBook(id).subscribe(val => {
       console.log(val);
       this.getAllBooks();
+      M.toast({html: 'Deleted Successfully'});
+      this.delbtnDisable = false;
     });
   }
   updateBook() {
@@ -91,6 +100,8 @@ export class AddbookComponent implements OnInit {
         id: this.updateid,
         ...this.updateForm.value}).subscribe(val => {
         console.log(val);
+        this.editbtnDisable = false;
+        M.toast({html: 'Edited Successfully'});
         this.getAllBooks();
       });
 

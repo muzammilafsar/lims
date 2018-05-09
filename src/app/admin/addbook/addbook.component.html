@@ -36,7 +36,7 @@
               </select>
               <label>Materialize Select</label>
             </div> -->
-          <button class="btn center-align" (click)="addBook()" disabled="!addbtnDisable">Add Book</button>
+          <button class="btn center-align" [class.disabled]="addbtnDisable"  (click)="addBook()" >Add Book</button>
         
         </form>
     </div>
@@ -63,8 +63,8 @@
         <tr *ngFor="let book of allbooks | filter: searchTitle :searchAuthor">
           <td>{{book.title}}</td>
           <td>{{book.author}}</td>
-          <td><button class="btn" style="margin-right: 5px " (click)="editbook(book._id)">Edit</button>
-            <button class="btn" (click)="deletebook(book._id)">Remove</button></td>
+          <td><button class="btn" style="margin-right: 5px " [class.disabled]="editbtnDisable" (click)="editbook(book._id)">Edit</button>
+            <button class="btn" [class.disabled]="delbtnDisable" (click)="deletebook(book._id)">Remove</button></td>
         </tr>
        
       </tbody>
