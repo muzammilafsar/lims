@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ApiserviceService } from '../../apiservice.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -9,7 +10,7 @@ import { ApiserviceService } from '../../apiservice.service';
 export class HomeComponent implements OnInit {
   bookForm: FormGroup;
   admin = false;
-  constructor(private apiService: ApiserviceService) {
+  constructor(private apiService: ApiserviceService, private router: Router) {
   }
 
   ngOnInit() {
@@ -23,6 +24,8 @@ export class HomeComponent implements OnInit {
     });
     if (this.apiService.admin_logged_in) {
       this.admin = true;
+    } else {
+      this.router.navigate(['']);
     }
   }
   addBook() {

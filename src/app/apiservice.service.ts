@@ -27,7 +27,7 @@ export class ApiserviceService {
       this.userdata = data;
       this.logged_in = true;
     }
-    if (data.username === 'admin') {
+    if ( data && data.username === 'admin') {
       this.admin_logged_in = true;
     }
   }

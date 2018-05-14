@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiserviceService } from '../../apiservice.service';
 import { Http, Response } from '@angular/http';
 import * as M from 'materialize-css';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-homepage',
   templateUrl: './homepage.component.html',
@@ -17,10 +18,13 @@ export class HomepageComponent implements OnInit {
     bio: false,
     history: false
   };
-  constructor(private apiService: ApiserviceService) { }
+  constructor(private apiService: ApiserviceService, private router: Router) { }
 
   ngOnInit() {
   this.getAll();
+  if (this.apiService.admin_logged_in) {
+    this.router.navigate(['admin', 'addbook']);
+  }
   }
   getAll() {
     this.apiService.getAllBooks().subscribe(val => {

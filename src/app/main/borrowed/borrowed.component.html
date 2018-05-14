@@ -1,4 +1,5 @@
-
+<div *ngIf="!admin">
+  
 <ul class="tabs tabs-fixed-width tab-demo z-depth-1">
   <li class="tab"><a class="active" href="#test1">Active Book</a></li>
   <li class="tab"><a  href="#test2">History</a></li>
@@ -62,3 +63,7 @@
 </div>
 
       
+</div>
+<div *ngIf="admin">
+  <h4>Please Login as a User</h4>
+</div>

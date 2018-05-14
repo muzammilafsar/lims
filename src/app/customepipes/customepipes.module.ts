@@ -9,7 +9,7 @@ import { CategoryFilterPipe } from './category.pipe';
   ],
   exports: [
     FilterPipe,
-    CategoryFilterPipe
+    CategoryFilterPipe,
   ],
   declarations: [FilterPipe, CategoryFilterPipe]
 })

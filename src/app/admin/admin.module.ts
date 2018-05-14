@@ -19,7 +19,7 @@ const routes: Routes = [
     ReactiveFormsModule,
     RouterModule.forRoot(routes),
     FormsModule,
-    CustomepipesModule
+    CustomepipesModule,
   ],
   declarations: [HomeComponent, AddbookComponent, AllborrowedComponent]
 })

@@ -8,11 +8,14 @@ import * as M from 'materialize-css';
 })
 export class BorrowedComponent implements OnInit {
   borrowedBooks =  [];
-  constructor(private apiService: ApiserviceService) { }
+  admin = false;
+  constructor(private apiService: ApiserviceService) {
+
+  }
 
   ngOnInit() {
     this.getAll();
-    M.AutoInit();
+    this.admin = this.apiService.admin_logged_in;
   }
   getAll() {
     this.apiService.userBooks().subscribe(val => {
