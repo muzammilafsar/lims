@@ -13,6 +13,7 @@ export class ApiserviceService {
   logged_in = false;
   constructor(private http: HttpClient,
   private socialAuthService: AuthService) { }
+  admin_logged_in = false;
 
   getAllBooks() {
     return this.http.get('http://limserver.herokuapp.com/allbooks').map((val) => {
@@ -25,6 +26,9 @@ export class ApiserviceService {
     if (data) {
       this.userdata = data;
       this.logged_in = true;
+    }
+    if (data.username === 'admin') {
+      this.admin_logged_in = true;
     }
   }
   logout(socialPlatform: string) {
@@ -88,5 +92,8 @@ export class ApiserviceService {
   }
   allBorrowedBooks() {
     return this.http.get('http://limserver.herokuapp.com/getallborrowedbooks');
+  }
+  adminlogin(body) {
+    return this.http.post('http://limserver.herokuapp.com/adminlogin', body);
   }
 }

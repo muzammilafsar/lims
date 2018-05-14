@@ -20,6 +20,11 @@ export class CategoryFilterPipe implements PipeTransform {
             return val.category === prop;
           });
         }
+        if (prop === 'edu' && filterby[`${prop}`]) {
+          result = items.filter(val => {
+            return val.category === prop;
+          });
+        }
         if (prop === 'bio' && filterby[`${prop}`]) {
           result = items.filter(val => {
             return val.category === prop;

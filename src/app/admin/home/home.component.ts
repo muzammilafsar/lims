@@ -8,7 +8,9 @@ import { ApiserviceService } from '../../apiservice.service';
 })
 export class HomeComponent implements OnInit {
   bookForm: FormGroup;
-  constructor(private apiService: ApiserviceService) { }
+  admin = false;
+  constructor(private apiService: ApiserviceService) {
+  }
 
   ngOnInit() {
     this.bookForm = new FormGroup({
@@ -19,6 +21,9 @@ export class HomeComponent implements OnInit {
       no_of_copies: new FormControl('', [Validators.required]),
       image: new FormControl('', [Validators.required]),
     });
+    if (this.apiService.admin_logged_in) {
+      this.admin = true;
+    }
   }
   addBook() {
     if (this.bookForm.valid) {

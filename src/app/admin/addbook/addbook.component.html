@@ -27,15 +27,17 @@
             <input value="" id="copies" type="number" class="validate" formControlName="no_of_copies" required>
             <label class="active" for="copies">Total copies</label>
           </div>
-          <!-- <div class="input-field">
-              <select>
-                <option value="tech" disabled selected>Choose your option</option>
-                <option value="bio">Option 1</option>
-                <option value="horror">Option 2</option>
-                <option value="edu">Option 3</option>
-              </select>
-              <label>Materialize Select</label>
-            </div> -->
+          <div class="input-field ">
+            <select formControlName="category">
+              <option value="" disabled selected>Choose your option</option>
+              <option value="tech">Technology</option>
+              <option value="bio">Biography</option>
+              <option value="edu">Educational</option>
+              <option value="history">History</option>
+              
+            </select>
+            <label>Select Category</label>
+          </div>
           <button class="btn center-align" [class.disabled]="addbtnDisable"  (click)="addBook()" >Add Book</button>
         
         </form>
@@ -99,7 +101,16 @@
         <input value="" id="copies" type="number" class="validate" formControlName="no_of_copies" placeholder="No of copies" required>
         <label for="copies">Copies</label>
       </div>
-      
+      <div class="input-field ">
+        <select formControlName="category">
+          <option value="" disabled selected>Choose your option</option>
+          <option value="tech">Technology</option>
+          <option value="bio">Biography</option>
+          <option value="edu">Educational</option>
+          <option value="history">History</option>
+        </select>
+        <label>Select Category</label>
+      </div>
     
     </form>
   </div>

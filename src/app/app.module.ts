@@ -16,7 +16,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { MainModule } from './main/main.module';
 import { HttpModule } from '@angular/http';
 import { AdminModule } from './admin/admin.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CustomepipesModule } from './customepipes/customepipes.module';
 
 export function getAuthServiceConfigs() {
@@ -46,7 +46,8 @@ export function getAuthServiceConfigs() {
     MainModule,
     AdminModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [
     {

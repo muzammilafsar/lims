@@ -39,6 +39,10 @@ export class HomepageComponent implements OnInit {
     this.category[`${id}`] = true;
   }
   borrowBook(id) {
+    if (!this.apiService.logged_in) {
+      M.toast({html: 'Please Login First'});
+      return;
+    }
     this.borrowBtnDisabled = true;
     this.apiService.borrowBook(id).subscribe(val => {
       console.log(val);

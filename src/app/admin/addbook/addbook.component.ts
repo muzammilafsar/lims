@@ -20,6 +20,7 @@ export class AddbookComponent implements OnInit {
   constructor(private apiService: ApiserviceService) { }
 
   ngOnInit() {
+    M.AutoInit();
     this.bookForm = new FormGroup({
       title: new FormControl('', [Validators.required]),
       author: new FormControl('', [Validators.required]),
@@ -27,6 +28,7 @@ export class AddbookComponent implements OnInit {
       isbn: new FormControl('', [Validators.required]),
       no_of_copies: new FormControl('', [Validators.required]),
       image: new FormControl('', [Validators.required]),
+      category: new FormControl(null, [Validators.required])
     });
     this.updateForm = new FormGroup({
       title: new FormControl('', [Validators.required]),
@@ -35,6 +37,7 @@ export class AddbookComponent implements OnInit {
       isbn: new FormControl('', [Validators.required]),
       no_of_copies: new FormControl('', [Validators.required]),
       image: new FormControl('', [Validators.required]),
+      category: new FormControl('', [Validators.required])
     });
     this.getAllBooks();
     document.addEventListener('DOMContentLoaded', function() {
@@ -65,7 +68,6 @@ export class AddbookComponent implements OnInit {
     }
   }
   editbook(id) {
-    this.editbtnDisable = true;
     const book = this.allbooks.find(val => {
       return val._id === id;
     });
@@ -78,6 +80,7 @@ export class AddbookComponent implements OnInit {
         isbn: new FormControl(book.isbn, [Validators.required]),
         no_of_copies: new FormControl(book.no_of_copies, [Validators.required]),
         image: new FormControl(book.image, [Validators.required]),
+        category: new FormControl(book.category, [Validators.required]),
       });
       const elems = document.querySelectorAll('.modal');
       const instances = M.Modal.init(elems);
@@ -94,6 +97,7 @@ export class AddbookComponent implements OnInit {
     });
   }
   updateBook() {
+    this.editbtnDisable = true;
     console.log('update', this.updateForm.valid);
     if (this.updateForm.valid) {
       this.apiService.updateBook({
