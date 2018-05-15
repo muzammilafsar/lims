@@ -17,7 +17,7 @@
               <td><input type="text" placeholder="Search By Author" [(ngModel)]="searchAuthor"></td>
               <td></td>
             </tr>
-        <tr *ngFor="let book of allborrow | filter: searchTitle :searchAuthor">
+        <tr *ngFor="let book of allborrow | filter: searchTitle :searchAuthor :searchUser">
           <td>{{book.user}}</td>
           <td>{{book.title}}</td>
           <td>{{book.author}}</td>

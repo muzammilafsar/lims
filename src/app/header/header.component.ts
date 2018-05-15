@@ -24,6 +24,9 @@ export class HeaderComponent implements OnInit, AfterViewInit {
       password: new FormControl('', Validators.required)
     });
   }
+  progress() {
+    return this.apiService.progress;
+  }
   ngAfterViewInit() {
     const elem = document.querySelector('.dropdown-trigger');
     const instance = M.Dropdown.init(elem, {});

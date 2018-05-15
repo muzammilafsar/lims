@@ -18,7 +18,10 @@
       </ul>
     </div>
  
-</nav>
+</nav>  
+<div *ngIf="(progress())" class="progress" style="margin-top: 0px;position: absolute;">
+  <div class="indeterminate"></div>
+</div>
 
 <div id="adminlogin" class="modal">
   <div class="modal-content">

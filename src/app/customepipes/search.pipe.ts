@@ -3,13 +3,15 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'filter'
 })
 export class FilterPipe implements PipeTransform {
-  transform(items: any[], searchTitle: string, searchAuthor: string): any[] {
-    if (!items) {return [];
+  transform(items: any[], searchTitle: string, searchAuthor: string, user: string): any[] {
+    if (!items) {
+      return [];
     }
-    if (!searchTitle && !searchAuthor) {return items;
+    if (!searchTitle && !searchAuthor && !user) {
+      return items;
     }
     // searchTitle = searchTitle.toLowerCase();
-let result = items.filter( it => {
+    let result = items.filter(it => {
       if (!searchTitle) {
         return true;
       }
@@ -20,12 +22,20 @@ let result = items.filter( it => {
     //   console.log(val);
     //   return true;
     // })
-result = result.filter( it => {
-  if (!searchAuthor) {
-    return true;
+    result = result.filter(it => {
+      if (!searchAuthor) {
+        return true;
+      }
+      return it.author.toLowerCase().includes(searchAuthor);
+    });
+if (user) {
+  result = result.filter(it => {
+    if (!user) {
+      return true;
+    }
+    return it.user.toLowerCase().includes(user);
+  });
+}
+    return result;
   }
-  return it.author.toLowerCase().includes(searchAuthor);
-});
-return result;
-   }
 }

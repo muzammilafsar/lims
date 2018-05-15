@@ -14,6 +14,7 @@ export class ApiserviceService {
   constructor(private http: HttpClient,
   private socialAuthService: AuthService) { }
   admin_logged_in = false;
+  progress = true;
 
   getAllBooks() {
     return this.http.get('http://limserver.herokuapp.com/allbooks').map((val) => {

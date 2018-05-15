@@ -41,8 +41,8 @@ export class AddbookComponent implements OnInit {
     });
     this.getAllBooks();
     document.addEventListener('DOMContentLoaded', function() {
-      var elems = document.querySelectorAll('.modal');
-      var instances = M.Modal.init(elems);
+      const elems = document.querySelectorAll('.modal');
+      const instances = M.Modal.init(elems);
       // instances[0].open();
       this.modal = instances[0];
       // console.log();
@@ -55,6 +55,7 @@ export class AddbookComponent implements OnInit {
   }
   addBook() {
     this.addbtnDisable = true;
+    this.apiService.progress = true;
     if (this.bookForm.valid) {
       console.log(this.bookForm.value);
       this.apiService.addBook( this.bookForm.value ).subscribe(val => {
@@ -62,6 +63,7 @@ export class AddbookComponent implements OnInit {
           this.getAllBooks();
           M.toast({html: 'Added Successfully'});
           this.bookForm.reset();
+          this.apiService.progress = false;
           this.addbtnDisable = false;
         }
       });
@@ -88,15 +90,18 @@ export class AddbookComponent implements OnInit {
     }
   }
   deletebook(id) {
+    this.apiService.progress = true;
     this.delbtnDisable = true;
     this.apiService.deleteBook(id).subscribe(val => {
       console.log(val);
       this.getAllBooks();
       M.toast({html: 'Deleted Successfully'});
       this.delbtnDisable = false;
+      this.apiService.progress = false;
     });
   }
   updateBook() {
+    this.apiService.progress = true;
     this.editbtnDisable = true;
     console.log('update', this.updateForm.valid);
     if (this.updateForm.valid) {
@@ -105,6 +110,7 @@ export class AddbookComponent implements OnInit {
         ...this.updateForm.value}).subscribe(val => {
         console.log(val);
         this.editbtnDisable = false;
+        this.apiService.progress = false;
         M.toast({html: 'Edited Successfully'});
         this.getAllBooks();
       });

@@ -1,4 +1,4 @@
-<div *ngIf="!admin">
+<div>
   
 <ul class="tabs tabs-fixed-width tab-demo z-depth-1">
   <li class="tab"><a class="active" href="#test1">Active Book</a></li>
@@ -25,7 +25,7 @@
               <td>{{borrow.author}}</td>
               <td>{{borrow.issue_date | date}}</td>
               <td>{{borrow.Due_date |date}}</td>
-              <td><button class="btn" (click)="returnBook(borrow._id)" *ngIf="!borrow.Returned">Return</button></td>
+              <td><button [class.disabled]="disableReturn" class="btn" (click)="returnBook(borrow._id)" *ngIf="!borrow.Returned">Return</button></td>
             </tr>
       </ng-container>
       

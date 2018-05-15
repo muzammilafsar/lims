@@ -27,8 +27,10 @@ export class HomepageComponent implements OnInit {
   }
   }
   getAll() {
+    this.apiService.progress = true;
     this.apiService.getAllBooks().subscribe(val => {
       console.log(val);
+      this.apiService.progress = false;
       this.books = val;
     });
   }
@@ -43,6 +45,7 @@ export class HomepageComponent implements OnInit {
     this.category[`${id}`] = true;
   }
   borrowBook(id) {
+    this.apiService.progress = true;
     if (!this.apiService.logged_in) {
       M.toast({html: 'Please Login First'});
       return;
@@ -51,6 +54,7 @@ export class HomepageComponent implements OnInit {
     this.apiService.borrowBook(id).subscribe(val => {
       console.log(val);
       this.borrowBtnDisabled = false;
+      this.apiService.progress = false;
       if (val['status'] === 200) {
         M.toast({html: 'Borrowed Successfully'});
       }
@@ -62,5 +66,8 @@ export class HomepageComponent implements OnInit {
       }
       this.getAll();
     });
+  }
+  get progress$() {
+    return this.apiService.progress;
   }
 }
