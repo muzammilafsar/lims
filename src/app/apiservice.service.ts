@@ -97,4 +97,10 @@ export class ApiserviceService {
   adminlogin(body) {
     return this.http.post('http://limserver.herokuapp.com/adminlogin', body);
   }
+  fetchisbn(isbn) {
+    return this.http.get(`https://openlibrary.org/api/books?bibkeys=ISBN:${isbn}&jscmd=data&format=json`);
+  }
+  fetchDesc(isbn) {
+    return this.http.get(`https://openlibrary.org/api/books?bibkeys=ISBN:${isbn}&jscmd=details&format=json`);
+  }
 }

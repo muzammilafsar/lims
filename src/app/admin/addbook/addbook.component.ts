@@ -89,6 +89,24 @@ export class AddbookComponent implements OnInit {
       instances[0].open();
     }
   }
+  fetchisbn() {
+    this.apiService.fetchDesc(this.bookForm.value.isbn).subscribe(val => {
+      console.log(val);
+      this.bookForm.patchValue({description: val[`ISBN:${this.bookForm.value.isbn}`].details.description.value });
+      // this.bookForm.value.description = ;
+    });
+    this.apiService.fetchisbn(this.bookForm.value.isbn).subscribe(val => {
+      console.log(val);
+      this.bookForm.patchValue({
+        title: val[`ISBN:${this.bookForm.value.isbn}`].title,
+        author: val[`ISBN:${this.bookForm.value.isbn}`].authors[0].name,
+        image: val[`ISBN:${this.bookForm.value.isbn}`].cover.medium
+      });
+      // this.bookForm.value.title = val[`ISBN:${this.bookForm.value.isbn}`].title;
+      // this.bookForm.value.author = val[`ISBN:${this.bookForm.value.isbn}`].authors[0].name;
+      // this.bookForm.value.image = val[`ISBN:${this.bookForm.value.isbn}`].cover.medium;
+    });
+  }
   deletebook(id) {
     this.apiService.progress = true;
     this.delbtnDisable = true;
