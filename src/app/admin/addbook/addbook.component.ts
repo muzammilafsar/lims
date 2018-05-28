@@ -91,17 +91,25 @@ export class AddbookComponent implements OnInit {
   }
   fetchisbn() {
     this.apiService.fetchDesc(this.bookForm.value.isbn).subscribe(val => {
-      console.log(val);
+      if (val[`ISBN:${this.bookForm.value.isbn}`]) {
       this.bookForm.patchValue({description: val[`ISBN:${this.bookForm.value.isbn}`].details.description.value });
+      } else {
+      M.toast({html: 'Description Not Found'});
+      }
       // this.bookForm.value.description = ;
     });
     this.apiService.fetchisbn(this.bookForm.value.isbn).subscribe(val => {
       console.log(val);
-      this.bookForm.patchValue({
-        title: val[`ISBN:${this.bookForm.value.isbn}`].title,
-        author: val[`ISBN:${this.bookForm.value.isbn}`].authors[0].name,
-        image: val[`ISBN:${this.bookForm.value.isbn}`].cover.medium
-      });
+      if (val[`ISBN:${this.bookForm.value.isbn}`]) {
+        this.bookForm.patchValue({
+          title: val[`ISBN:${this.bookForm.value.isbn}`].title,
+          author: (val[`ISBN:${this.bookForm.value.isbn}`].authors) ? val[`ISBN:${this.bookForm.value.isbn}`].authors[0].name : '',
+          image: val[`ISBN:${this.bookForm.value.isbn}`].cover.medium
+        });
+        } else {
+          M.toast({html: 'Details Not Found'});
+        }
+      M.AutoInit();
       // this.bookForm.value.title = val[`ISBN:${this.bookForm.value.isbn}`].title;
       // this.bookForm.value.author = val[`ISBN:${this.bookForm.value.isbn}`].authors[0].name;
       // this.bookForm.value.image = val[`ISBN:${this.bookForm.value.isbn}`].cover.medium;
