@@ -5,7 +5,7 @@
   <li class="tab"><a  href="#test2">History</a></li>
 
 </ul>
-<div id="activebooks" class="col s12">
+<div id="activebooks" class="col s12" *ngIf="calculateBorrowedBooks >= 1">
   <table>
     <thead>
       <tr>
@@ -33,6 +33,7 @@
     </tbody>
   </table>
 </div>
+<div  id="activebooks" *ngIf="calculateBorrowedBooks === 0"><h4  style="text-align: center"> No Active Borrowed Books</h4></div>
 <div id="test2" class="col s12">
     <table>
         <thead>

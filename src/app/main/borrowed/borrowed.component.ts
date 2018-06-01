@@ -44,5 +44,17 @@ export class BorrowedComponent implements OnInit {
       M.toast({html: 'Book Returned'});
     });
   }
+  get calculateBorrowedBooks() {
+    let total = 0;
+    this.borrowedBooks.map(val => {
+       if (!val['Returned']) {
+        total++;
+       }
+    });
+    if (this.apiService.progress) {
+      return 1;
+    }
+    return total;
+  }
 
 }

@@ -15,10 +15,12 @@
             <input value="" id="description" type="text" class="validate" formControlName="description" required>
             <label class="active" for="description">Description</label>
           </div>
-          <div class="input-field ">
-            <input value="" id="isbn" type="text" class="validate" formControlName="isbn" required>
-            <label class="active" for="isbn">ISBN</label>
-          </div>
+          <div class="row"><div class="col m9">
+            <div class="input-field ">
+              <input value="" id="isbn" type="text" class="validate" formControlName="isbn" required>
+              <label class="active" for="isbn">ISBN</label>
+            </div>
+          </div><div class="col m3" style="padding-top: 20px"> <button class="btn" (click)="fetchisbn()">Get Details</button></div></div>
           <div class="input-field ">
             <input value="" id="image" type="text" class="validate" formControlName="image" required> 
             <label class="active" for="image">Image Url</label>
@@ -38,14 +40,14 @@
             </select>
             <label>Select Category</label>
           </div>
-          <button class="btn" (click)="fetchisbn()">Get Details</button>
+
           <button class="btn center-align" [class.disabled]="addbtnDisable"  (click)="addBook()" >Add Book</button>
         
         </form>
     </div>
 
 </div>
-<div class="col s12 m8">
+<div class="col s12 m8" style="margin-top: 19px;">
     <div class="card-panel ">
 
   <table>

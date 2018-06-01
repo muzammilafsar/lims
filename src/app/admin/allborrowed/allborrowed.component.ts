@@ -27,10 +27,12 @@ export class AllborrowedComponent implements OnInit {
   constructor(private apiService: ApiserviceService) { }
 
   ngOnInit() {
+    this.apiService.progress = true;
     this.apiService.allBorrowedBooks().subscribe(val => {
       console.log(val);
       this.allborrow = val['books'];
       this.sort('title');
+      this.apiService.progress = false;
     });
   }
   sortData(key) {
