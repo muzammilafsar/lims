@@ -86,7 +86,7 @@ export class AddbookComponent implements OnInit {
       });
       const elems = document.querySelectorAll('.modal');
       const instances = M.Modal.init(elems);
-      instances[0].open();
+      instances[1].open();
     }
   }
   fetchisbn() {

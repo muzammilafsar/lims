@@ -40,6 +40,7 @@ export class ApiserviceService {
 
     this.socialAuthService.signOut().catch(err => {
       console.log(err);
+    }).then(() => {
       localStorage.clear();
       window.location.reload();
     });
