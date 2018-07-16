@@ -18,7 +18,7 @@ export class ApiserviceService {
 
   getAllBooks() {
     return this.http.get('http://limserver.herokuapp.com/allbooks').map((val) => {
-      console.log(val);
+      // console.log(val);
       return val['books'];
     });
   }
@@ -54,7 +54,7 @@ export class ApiserviceService {
     }
     this.socialAuthService.signIn(socialPlatformProvider).then(
       (userData) => {
-        console.log(socialPlatform + ' sign in data : ' , userData);
+        // console.log(socialPlatform + ' sign in data : ' , userData);
         localStorage.setItem('auth', JSON.stringify(userData));
         // Now sign-in with userData
         // ...?

@@ -1,44 +1,66 @@
 <nav>
   <div class="nav-wrapper">
     <a a routerLink="" class="brand-logo center">Library</a>
-    <ul id="nav-mobile" class="left hide-on-med-and-down" >
-        <li *ngIf="!admin" ><a routerLink="">Home</a></li>
-        <li *ngIf="!logged_in$"> <a class="waves-effect waves-light modal-trigger" href="#adminlogin">Admin Login</a></li>
-        <li *ngIf="admin"><a routerLink="admin/addbook">Add/Remove Book</a></li>
-        <li *ngIf="admin"><a routerLink="admin/allborrowed">All Borrowed</a></li>
+    <ul id="nav-mobile" class="left hide-on-med-and-down">
+      <li *ngIf="!admin">
+        <a routerLink="">Home</a>
+      </li>
+      <li *ngIf="!logged_in$">
+        <a class="waves-effect waves-light modal-trigger" href="#adminlogin">Admin Login</a>
+      </li>
+      <li *ngIf="admin">
+        <a routerLink="admin/addbook">Add/Remove Book</a>
+      </li>
+      <li *ngIf="admin">
+        <a routerLink="admin/allborrowed">All Borrowed</a>
+      </li>
+    </ul>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <li *ngIf="!logged_in$">
+        <a (click)="signin()">SignIn</a>
+      </li>
+      <li *ngIf="logged_in$ && !admin">
+        <a routerLink="borrowedbooks">Borrowed Books</a>
+      </li>
+      <li *ngIf="logged_in$">
+        <img class="userimage" [src]="userData$.image" alt="">
+      </li>
+      <li *ngIf="logged_in$">
+        <a class="dropdown-trigger" href='#' data-target='dropdown1'>My Account</a>
+      </li>
+      <ul id='dropdown1' class='dropdown-content'>
+        <li>
+          <a (click)="logout()">Logout</a>
+        </li>
       </ul>
-    <ul id="nav-mobile" class="right hide-on-med-and-down" >
-        <li *ngIf="!logged_in$"><a (click)="signin()">SignIn</a></li>
-        <li *ngIf="logged_in$ && !admin"><a routerLink="borrowedbooks">Borrowed Books</a></li>
-        <li *ngIf="logged_in$"><img class="userimage" [src]="userData$.image" alt=""></li>
-        <li *ngIf="logged_in$"><a class="dropdown-trigger" href='#' data-target='dropdown1'>My Account</a></li>
-        <ul id='dropdown1' class='dropdown-content' >
-            <li><a (click)="logout()">Logout</a></li>
-          </ul>
-      </ul>
-    </div>
- 
-</nav>  
+    </ul>
+  </div>
+
+</nav>
 <div *ngIf="progress()" class="progress" style="margin-top: 0px;position: absolute;">
   <div class="indeterminate"></div>
 </div>
 
 <div id="adminlogin" class="modal">
   <div class="modal-content">
-    <h5>Admin Login</h5><br>
-  <form [formGroup]="adminForm">
-    <div class="input-field ">
-      <input id="username" type="text" formControlName="username" class="validate">
-      <label for="username">Username</label>
-      <span *ngIf="adminForm.value.username.trim().length === 0 && adminForm.controls.username.touched" class="helper-text" data-error="wrong" data-success="right" style="color: red">Username is required</span> 
-    </div>
-    <div class="input-field">
-      <input id="password" type="password" formControlName="password" class="validate">
-      <label for="password">Password</label>
-      <span *ngIf="adminForm.value.password.trim().length === 0 && adminForm.controls.password.touched" class="helper-text" data-error="wrong" data-success="right" style="color: red">Password is required</span> 
-    </div>
-  </form>
-  <span *ngIf="loginError" style=" color: red;">Username or Password is incorrect</span><br>
-  <a class="btn" (click)="adminlogin()" [class.disabled]="loginBtnDisabled">Login</a>
+    <h5>Admin Login</h5>
+    <br>
+    <form [formGroup]="adminForm">
+      <div class="input-field ">
+        <input id="username" type="text" formControlName="username" class="validate">
+        <label for="username">Username</label>
+        <span *ngIf="adminForm.value.username.trim().length === 0 && adminForm.controls.username.touched" class="helper-text" data-error="wrong"
+          data-success="right" style="color: red;">Username is required</span>
+      </div>
+      <div class="input-field">
+        <input id="password" type="password" formControlName="password" class="validate">
+        <label for="password">Password</label>
+        <span *ngIf="adminForm.value.password.trim().length === 0 && adminForm.controls.password.touched" class="helper-text" data-error="wrong"
+          data-success="right" style="color: red;">Password is required</span>
+      </div>
+    </form>
+    <span *ngIf="loginError" style=" color: red;">Username or Password is incorrect</span>
+    <br>
+    <a class="btn" (click)="adminlogin()" [class.disabled]="loginBtnDisabled">Login</a>
   </div>
 </div>

@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { Observable } from 'rxjs/Rx';
+import { Observable } from 'rxjs/Observable';
 import { HeaderComponent } from './header.component';
 import { ApiserviceService } from '../apiservice.service';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -11,7 +11,7 @@ class ApiServiceMock {
   socialSignIn(a) {}
   logout(a) {}
   adminlogin(a) {
-    return Observable.of({status: 200}, {status: 300});
+    return Observable.of({status: 400}, {status: 300});
   }
 }
 
@@ -40,7 +40,7 @@ describe('HeaderComponent', () => {
 
   it('should signin', () => {
     component.signin();
-    component.logout();
+    // component.logout();
     component.adminForm.patchValue({username: 'abcd', password: 'asadd'});
     component.adminlogin();
   });

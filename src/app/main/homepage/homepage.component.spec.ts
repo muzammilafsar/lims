@@ -33,7 +33,7 @@ describe('HomepageComponent', () => {
       imports: [FormsModule, RouterTestingModule],
       providers: [{provide: ApiserviceService, useClass: ApiServiceMock}, {
         provide: Router,
-        useClass: class { navigate = jasmine.createSpy("navigate"); }
+        useClass: class { navigate = jasmine.createSpy('navigate'); }
     }]
     })
     .compileComponents();
@@ -59,6 +59,5 @@ describe('HomepageComponent', () => {
     component.borrowBook('test');
     service.logged_in = false;
     component.borrowBook('test');
-    
    });
 });

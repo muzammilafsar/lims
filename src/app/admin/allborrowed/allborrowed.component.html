@@ -1,30 +1,66 @@
+<table>
+  <thead>
+    <tr>
+      <th class="valign-wrapper" (click)="sortData('user')">User
+        <span *ngIf="sortby.user">
+          <i *ngIf="order" style="font-size: 25px;" class="large material-icons">arrow_drop_up</i>
+          <i *ngIf="!order" style="font-size: 25px;" class="large material-icons">arrow_drop_down</i>
+        </span>
+      </th>
+      <th (click)="sortData('title')">Title
+        <span *ngIf="sortby.title">
+          <i *ngIf="order" style="font-size: 25px;" class="large material-icons">arrow_drop_up</i>
+          <i *ngIf="!order" style="font-size: 25px;" class="large material-icons">arrow_drop_down</i>
+        </span>
+      </th>
+      <th (click)="sortData('author')">Author
+        <span *ngIf="sortby.author">
+          <i *ngIf="order" style="font-size: 25px;" class="large material-icons">arrow_drop_up</i>
+          <i *ngIf="!order" style="font-size: 25px;" class="large material-icons">arrow_drop_down</i>
+        </span>
+      </th>
+      <th (click)="sortData('issue_date')">Issue Date
+        <span *ngIf="sortby.issue_date">
+          <i *ngIf="order" style="font-size: 25px;" class="large material-icons">arrow_drop_up</i>
+          <i *ngIf="!order" style="font-size: 25px;" class="large material-icons">arrow_drop_down</i>
+        </span>
+      </th>
+      <th (click)="sortData('due_date')">Due Date
+        <span *ngIf="sortby.due_date">
+          <i *ngIf="order" style="font-size: 25px;" class="large material-icons">arrow_drop_up</i>
+          <i *ngIf="!order" style="font-size: 25px;" class="large material-icons">arrow_drop_down</i>
+        </span>
+      </th>
+      <th (click)="sortData('return_date')">Return Date
+        <span *ngIf="sortby.return_date">
+          <i *ngIf="order" style="font-size: 25px;" class="large material-icons">arrow_drop_up</i>
+          <i *ngIf="!order" style="font-size: 25px;" class="large material-icons">arrow_drop_down</i>
+        </span>
+      </th>
+    </tr>
+  </thead>
 
-  <table>
-      <thead>
-        <tr>
-            <th class="valign-wrapper"  (click)="sortData('user')">User <span *ngIf="sortby.user"><i *ngIf="order" style="font-size: 25px" class="large material-icons">arrow_drop_up</i>  <i *ngIf="!order" style="font-size: 25px" class="large material-icons">arrow_drop_down</i></span></th>
-            <th (click)="sortData('title')">Title <span *ngIf="sortby.title"><i *ngIf="order" style="font-size: 25px" class="large material-icons">arrow_drop_up</i>  <i *ngIf="!order" style="font-size: 25px" class="large material-icons">arrow_drop_down</i></span></th>
-            <th (click)="sortData('author')">Author <span *ngIf="sortby.author"><i *ngIf="order" style="font-size: 25px" class="large material-icons">arrow_drop_up</i>  <i *ngIf="!order" style="font-size: 25px" class="large material-icons">arrow_drop_down</i></span></th>
-            <th (click)="sortData('issue_date')">Issue Date <span *ngIf="sortby.issue_date"><i *ngIf="order" style="font-size: 25px" class="large material-icons">arrow_drop_up</i>  <i *ngIf="!order" style="font-size: 25px" class="large material-icons">arrow_drop_down</i></span></th>
-            <th (click)="sortData('due_date')">Due Date <span *ngIf="sortby.due_date"><i *ngIf="order" style="font-size: 25px" class="large material-icons">arrow_drop_up</i>  <i *ngIf="!order" style="font-size: 25px" class="large material-icons">arrow_drop_down</i></span></th>
-            <th (click)="sortData('return_date')">Return Date <span *ngIf="sortby.return_date"><i *ngIf="order" style="font-size: 25px" class="large material-icons">arrow_drop_up</i>  <i *ngIf="!order" style="font-size: 25px" class="large material-icons">arrow_drop_down</i></span></th>
-        </tr>
-      </thead>
-  
-      <tbody>
-          <tr><td><input type="text" placeholder="Search By Title" [(ngModel)]="searchUser"></td>
-              <td><input type="text" placeholder="Search By Title" [(ngModel)]="searchTitle"></td>
-              <td><input type="text" placeholder="Search By Author" [(ngModel)]="searchAuthor"></td>
-              <td></td>
-            </tr>
-        <tr *ngFor="let book of allborrow | filter: searchTitle :searchAuthor :searchUser">
-          <td>{{book.user}}</td>
-          <td>{{book.title}}</td>
-          <td>{{book.author}}</td>
-          <td>{{book.issue_date | date }} {{book.issue_date | date: 'mediumTime' }}</td>
-          <td>{{book.Due_date | date}} {{book.Due_date | date: 'mediumTime'}}</td>
-          <td>{{book.Return_date | date}} {{book.Return_date | date: 'mediumTime'}}</td>
-        </tr>
-       
-      </tbody>
-    </table>
+  <tbody>
+    <tr>
+      <td>
+        <input type="text" placeholder="Search By Title" [(ngModel)]="searchUser">
+      </td>
+      <td>
+        <input type="text" placeholder="Search By Title" [(ngModel)]="searchTitle">
+      </td>
+      <td>
+        <input type="text" placeholder="Search By Author" [(ngModel)]="searchAuthor">
+      </td>
+      <td></td>
+    </tr>
+    <tr *ngFor="let book of allborrow | filter: searchTitle :searchAuthor :searchUser">
+      <td>{{book.user}}</td>
+      <td>{{book.title}}</td>
+      <td>{{book.author}}</td>
+      <td>{{book.issue_date | date }} {{book.issue_date | date: 'mediumTime' }}</td>
+      <td>{{book.Due_date | date}} {{book.Due_date | date: 'mediumTime'}}</td>
+      <td>{{book.Return_date | date}} {{book.Return_date | date: 'mediumTime'}}</td>
+    </tr>
+
+  </tbody>
+</table>

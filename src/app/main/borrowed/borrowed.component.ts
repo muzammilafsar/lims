@@ -17,7 +17,7 @@ export class BorrowedComponent implements OnInit {
 
   ngOnInit() {
     this.admin = this.apiService.admin_logged_in;
-    console.log(this.apiService.logged_in);
+    // console.log(this.apiService.logged_in);
     if (!this.apiService.logged_in) {
       this.router.navigate(['']);
     } else {
@@ -28,7 +28,7 @@ export class BorrowedComponent implements OnInit {
   getAll() {
     this.apiService.progress = true;
     this.apiService.userBooks().subscribe(val => {
-      console.log(val);
+      // console.log(val);
       this.apiService.progress = false;
       this.borrowedBooks = val['borrow'];
     });
@@ -37,7 +37,7 @@ export class BorrowedComponent implements OnInit {
     this.apiService.progress = true;
     this.disableReturn = true;
     this.apiService.returnBook(id).subscribe(val => {
-      console.log(val);
+      // console.log(val);
       this.getAll();
       this.disableReturn = false;
       this.apiService.progress = false;

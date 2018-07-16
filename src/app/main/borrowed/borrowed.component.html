@@ -1,69 +1,77 @@
 <div>
-  
-<ul class="tabs tabs-fixed-width tab-demo z-depth-1" style="margin-top: 5px;">
-  <li class="tab"><a class="active" href="#activebooks">Active Book</a></li>
-  <li class="tab"><a  href="#test2">History</a></li>
 
-</ul>
-<div id="activebooks" class="col s12" *ngIf="calculateBorrowedBooks >= 1">
-  <table>
-    <thead>
-      <tr>
+  <ul class="tabs tabs-fixed-width tab-demo z-depth-1" style="margin-top: 5px;">
+    <li class="tab">
+      <a class="active" href="#activebooks">Active Book</a>
+    </li>
+    <li class="tab">
+      <a href="#test2">History</a>
+    </li>
+
+  </ul>
+  <div id="activebooks" class="col s12" *ngIf="calculateBorrowedBooks >= 1">
+    <table>
+      <thead>
+        <tr>
           <th>Title</th>
           <th>Author</th>
           <th>Issue Date</th>
           <th>Due Date</th>
           <th>Action</th>
-          
-      </tr>
-    </thead>
-  
-    <tbody>
-      <ng-container *ngFor="let borrow of borrowedBooks">
-          <tr *ngIf="!borrow.Returned" >
-              <td>{{borrow.title}}</td>
-              <td>{{borrow.author}}</td>
-              <td>{{borrow.issue_date | date}}</td>
-              <td>{{borrow.Due_date |date}}</td>
-              <td><button [class.disabled]="disableReturn" class="btn" (click)="returnBook(borrow._id)" *ngIf="!borrow.Returned">Return</button></td>
-            </tr>
-      </ng-container>
-      
-      
-    </tbody>
-  </table>
-</div>
-<div  id="activebooks" *ngIf="calculateBorrowedBooks === 0"><h4  style="text-align: center"> No Active Borrowed Books</h4></div>
-<div id="test2" class="col s12">
-    <table>
-        <thead>
-          <tr>
-              <th>Title</th>
-              <th>Author</th>
-              <th>Issue Date</th>
-              <th>Due Date</th>
-              
-              
-          </tr>
-        </thead>
-      
-        <tbody>
-          <ng-container *ngFor="let borrow of borrowedBooks">
-              <tr *ngIf="borrow.Returned" >
-                  <td>{{borrow.title}}</td>
-                  <td>{{borrow.author}}</td>
-                  <td>{{borrow.issue_date | date}}</td>
-                  <td>{{borrow.Due_date | date}}</td>
-                  
-                </tr>
-          </ng-container>
-          
-          
-        </tbody>
-      </table>
-</div>
 
-      
+        </tr>
+      </thead>
+
+      <tbody>
+        <ng-container *ngFor="let borrow of borrowedBooks">
+          <tr *ngIf="!borrow.Returned">
+            <td>{{borrow.title}}</td>
+            <td>{{borrow.author}}</td>
+            <td>{{borrow.issue_date | date}}</td>
+            <td>{{borrow.Due_date |date}}</td>
+            <td>
+              <button [class.disabled]="disableReturn" class="btn" (click)="returnBook(borrow._id)" *ngIf="!borrow.Returned">Return</button>
+            </td>
+          </tr>
+        </ng-container>
+
+
+      </tbody>
+    </table>
+  </div>
+  <div id="activebooks" *ngIf="calculateBorrowedBooks === 0">
+    <h4 style="text-align: center;"> No Active Borrowed Books</h4>
+  </div>
+  <div id="test2" class="col s12">
+    <table>
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Author</th>
+          <th>Issue Date</th>
+          <th>Due Date</th>
+
+
+        </tr>
+      </thead>
+
+      <tbody>
+        <ng-container *ngFor="let borrow of borrowedBooks">
+          <tr *ngIf="borrow.Returned">
+            <td>{{borrow.title}}</td>
+            <td>{{borrow.author}}</td>
+            <td>{{borrow.issue_date | date}}</td>
+            <td>{{borrow.Due_date | date}}</td>
+
+          </tr>
+        </ng-container>
+
+
+      </tbody>
+    </table>
+  </div>
+
+
 </div>
 <div *ngIf="admin">
   <h4>Please Login as a User</h4>

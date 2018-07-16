@@ -30,7 +30,7 @@ export class HomeComponent implements OnInit {
   }
   addBook() {
     if (this.bookForm.valid) {
-      console.log(this.bookForm.value);
+      // console.log(this.bookForm.value);
       this.apiService.addBook( this.bookForm.value );
     }
   }

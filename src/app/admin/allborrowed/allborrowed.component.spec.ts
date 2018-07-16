@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { Observable } from 'rxjs/Rx';
+import { Observable } from 'rxjs/Observable';
 import { AllborrowedComponent } from './allborrowed.component';
 import { FormsModule } from '@angular/forms';
 import { FilterPipe } from '../../customepipes/search.pipe';

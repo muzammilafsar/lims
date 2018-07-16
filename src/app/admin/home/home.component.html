@@ -1,14 +1,8 @@
 <div class="row">
-  
-  
-<div *ngIf="admin">
-  
-  <router-outlet></router-outlet>
-</div>
-<div *ngIf="!admin">
-  <h3>You are not authorized</h3>
-</div>
-
-
-
+  <div *ngIf="admin">
+    <router-outlet></router-outlet>
   </div>
+  <div *ngIf="!admin">
+    <h3>You are not authorized</h3>
+  </div>
+</div>

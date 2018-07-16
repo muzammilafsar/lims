@@ -1,14 +1,25 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SigninComponent } from './signin.component';
-
+import { AuthService } from 'angular5-social-login';
+class AuthServiceMock {
+  signOut() {
+    return new Promise((e, rej) => {
+    });
+  }
+  signIn(a) {
+    return new Promise((e, rej) => {
+    });
+  }
+}
 describe('SigninComponent', () => {
   let component: SigninComponent;
   let fixture: ComponentFixture<SigninComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SigninComponent ]
+      declarations: [ SigninComponent ],
+      providers: [{provide: AuthService, useClass: AuthServiceMock}]
     })
     .compileComponents();
   }));
@@ -20,6 +31,14 @@ describe('SigninComponent', () => {
   });
 
   it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+  it('should logout', () => {
+    component.logout();
+    expect(component).toBeTruthy();
+  });
+  it('should socialSignIn', () => {
+    component.socialSignIn('');
     expect(component).toBeTruthy();
   });
 });

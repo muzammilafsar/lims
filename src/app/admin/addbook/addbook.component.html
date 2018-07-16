@@ -1,91 +1,104 @@
 <div class="col m4 s12">
-  
-  <div class="card-panel " style="margin-top: 27px;">
-      <h4>Add New Book</h4><br>
-      <form [formGroup]="bookForm">
-          <div class="input-field ">
-            <input value="" id="title" type="text" class="validate" formControlName="title" required>
-            <label class="active" for="title">Title</label>
-          </div>
-          <div class="input-field">
-            <input value="" id="author" type="text" class="validate"formControlName="author" required>
-            <label class="active" for="author">Author Name</label>
-          </div>
-          <div class="input-field ">
-            <input value="" id="description" type="text" class="validate" formControlName="description" required>
-            <label class="active" for="description">Description</label>
-          </div>
-          <div class="row"><div class="col m9">
-            <div class="input-field ">
-              <input value="" id="isbn" type="text" class="validate" formControlName="isbn" required>
-              <label class="active" for="isbn">ISBN</label>
-            </div>
-          </div><div class="col m3" style="padding-top: 20px"> <button class="btn" (click)="fetchisbn()">Get Details</button></div></div>
-          <div class="input-field ">
-            <input value="" id="image" type="text" class="validate" formControlName="image" required> 
-            <label class="active" for="image">Image Url</label>
-          </div>
-          <div class="input-field ">
-            <input value="" id="copies" type="number" class="validate" formControlName="no_of_copies" required>
-            <label class="active" for="copies">Total copies</label>
-          </div>
-          <div class="input-field ">
-            <select formControlName="category">
-              <option value="" disabled selected>Choose your option</option>
-              <option value="tech">Technology</option>
-              <option value="bio">Biography</option>
-              <option value="edu">Educational</option>
-              <option value="history">History</option>
-              
-            </select>
-            <label>Select Category</label>
-          </div>
 
-          <button class="btn center-align" [class.disabled]="addbtnDisable"  (click)="addBook()" >Add Book</button>
-        
-        </form>
-    </div>
+  <div class="card-panel " style="margin-top: 27px;">
+    <h4>Add New Book</h4>
+    <br>
+    <form [formGroup]="bookForm">
+      <div class="input-field ">
+        <input value="" id="title" type="text" class="validate" formControlName="title" required>
+        <label class="active" for="title">Title</label>
+      </div>
+      <div class="input-field">
+        <input value="" id="author" type="text" class="validate" formControlName="author" required>
+        <label class="active" for="author">Author Name</label>
+      </div>
+      <div class="input-field ">
+        <input value="" id="description" type="text" class="validate" formControlName="description" required>
+        <label class="active" for="description">Description</label>
+      </div>
+      <div class="row">
+        <div class="col m9">
+          <div class="input-field ">
+            <input value="" id="isbn" type="text" class="validate" formControlName="isbn" required>
+            <label class="active" for="isbn">ISBN</label>
+          </div>
+        </div>
+        <div class="col m3" style="padding-top: 20px;">
+          <button class="btn" (click)="fetchisbn()">Get Details</button>
+        </div>
+      </div>
+      <div class="input-field ">
+        <input value="" id="image" type="text" class="validate" formControlName="image" required>
+        <label class="active" for="image">Image Url</label>
+      </div>
+      <div class="input-field ">
+        <input value="" id="copies" type="number" class="validate" formControlName="no_of_copies" required>
+        <label class="active" for="copies">Total copies</label>
+      </div>
+      <div class="input-field ">
+        <select formControlName="category">
+          <option value="" disabled selected>Choose your option</option>
+          <option value="tech">Technology</option>
+          <option value="bio">Biography</option>
+          <option value="edu">Educational</option>
+          <option value="history">History</option>
+
+        </select>
+        <label>Select Category</label>
+      </div>
+
+      <button class="btn center-align" [class.disabled]="addbtnDisable" (click)="addBook()">Add Book</button>
+
+    </form>
+  </div>
 
 </div>
 <div class="col s12 m8" style="margin-top: 19px;">
-    <div class="card-panel ">
+  <div class="card-panel ">
 
-  <table>
+    <table>
       <thead>
         <tr>
-            <th>Title</th>
-            <th>Author</th>
-            <th>Actions</th>
+          <th>Title</th>
+          <th>Author</th>
+          <th>Actions</th>
         </tr>
       </thead>
-  
+
       <tbody>
-          <tr>
-              <td><input type="text" placeholder="Search By Title" [(ngModel)]="searchTitle"></td>
-              <td><input type="text" placeholder="Search By Author" [(ngModel)]="searchAuthor"></td>
-              <td></td>
-            </tr>
+        <tr>
+          <td>
+            <input type="text" placeholder="Search By Title" [(ngModel)]="searchTitle">
+          </td>
+          <td>
+            <input type="text" placeholder="Search By Author" [(ngModel)]="searchAuthor">
+          </td>
+          <td></td>
+        </tr>
         <tr *ngFor="let book of allbooks | filter: searchTitle :searchAuthor">
           <td>{{book.title}}</td>
           <td>{{book.author}}</td>
-          <td><button class="btn" style="margin-right: 5px " [class.disabled]="editbtnDisable" (click)="editbook(book._id)">Edit</button>
-            <button class="btn" [class.disabled]="delbtnDisable" (click)="deletebook(book._id)">Remove</button></td>
+          <td>
+            <button class="btn" style="margin-right: 5px;" [class.disabled]="editbtnDisable" (click)="editbook(book._id)">Edit</button>
+            <button class="btn" [class.disabled]="delbtnDisable" (click)="deletebook(book._id)">Remove</button>
+          </td>
         </tr>
-       
+
       </tbody>
     </table>
-</div>
+  </div>
 </div>
 <div id="modal1" class="modal modal-fixed-footer">
   <div class="modal-content">
-    <h4>Update</h4><br>
+    <h4>Update</h4>
+    <br>
     <form [formGroup]="updateForm">
       <div class="input-field ">
         <input value="" id="utitle" type="text" class="validate" formControlName="title" placeholder="Title" required>
         <label for="utitle">Title</label>
       </div>
       <div class="input-field">
-        <input value="" id="uauthor" type="text" class="validate"formControlName="author" placeholder="Author" required>
+        <input value="" id="uauthor" type="text" class="validate" formControlName="author" placeholder="Author" required>
         <label for="uauthor">Author</label>
       </div>
       <div class="input-field ">
@@ -97,7 +110,7 @@
         <label for="uisbn">ISBN</label>
       </div>
       <div class="input-field ">
-        <input value="" id="uimage" type="text" class="validate" formControlName="image" placeholder="Image URl" required> 
+        <input value="" id="uimage" type="text" class="validate" formControlName="image" placeholder="Image URl" required>
         <label for="uimage">Image Url</label>
       </div>
       <div class="input-field ">
@@ -114,7 +127,7 @@
         </select>
         <label>Select Category</label>
       </div>
-    
+
     </form>
   </div>
   <div class="modal-footer">

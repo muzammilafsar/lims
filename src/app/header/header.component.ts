@@ -44,7 +44,7 @@ export class HeaderComponent implements OnInit, AfterViewInit {
     this.apiService.socialSignIn('google');
   }
   adminlogin() {
-    console.log('working');
+    // console.log('working');
     this.loginError = false;
     this.loginBtnDisabled = true;
     if (this.adminForm.valid) {

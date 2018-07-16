@@ -29,7 +29,7 @@ export class HomepageComponent implements OnInit {
   getAll() {
     this.apiService.progress = true;
     this.apiService.getAllBooks().subscribe(val => {
-      console.log(val);
+      // console.log(val);
       this.apiService.progress = false;
       this.books = val;
     });
@@ -52,7 +52,7 @@ export class HomepageComponent implements OnInit {
     }
     this.borrowBtnDisabled = true;
     this.apiService.borrowBook(id).subscribe(val => {
-      console.log(val);
+      // console.log(val);
       this.borrowBtnDisabled = false;
       this.apiService.progress = false;
       if (val['status'] === 200) {

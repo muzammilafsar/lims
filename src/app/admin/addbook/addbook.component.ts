@@ -57,7 +57,7 @@ export class AddbookComponent implements OnInit {
     this.addbtnDisable = true;
     this.apiService.progress = true;
     if (this.bookForm.valid) {
-      console.log(this.bookForm.value);
+      // console.log(this.bookForm.value);
       this.apiService.addBook( this.bookForm.value ).subscribe(val => {
         if (val['status'] === 200 ) {
           this.getAllBooks();
@@ -99,7 +99,7 @@ export class AddbookComponent implements OnInit {
       // this.bookForm.value.description = ;
     });
     this.apiService.fetchisbn(this.bookForm.value.isbn).subscribe(val => {
-      console.log(val);
+      // console.log(val);
       if (val[`ISBN:${this.bookForm.value.isbn}`]) {
         this.bookForm.patchValue({
           title: val[`ISBN:${this.bookForm.value.isbn}`].title,
@@ -119,7 +119,7 @@ export class AddbookComponent implements OnInit {
     this.apiService.progress = true;
     this.delbtnDisable = true;
     this.apiService.deleteBook(id).subscribe(val => {
-      console.log(val);
+      // console.log(val);
       this.getAllBooks();
       M.toast({html: 'Deleted Successfully'});
       this.delbtnDisable = false;
@@ -129,12 +129,12 @@ export class AddbookComponent implements OnInit {
   updateBook() {
     this.apiService.progress = true;
     this.editbtnDisable = true;
-    console.log('update', this.updateForm.valid);
+    // console.log('update', this.updateForm.valid);
     if (this.updateForm.valid) {
       this.apiService.updateBook({
         id: this.updateid,
         ...this.updateForm.value}).subscribe(val => {
-        console.log(val);
+        // console.log(val);
         this.editbtnDisable = false;
         this.apiService.progress = false;
         M.toast({html: 'Edited Successfully'});
