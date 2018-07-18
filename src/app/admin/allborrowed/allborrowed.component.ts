@@ -24,6 +24,7 @@ export class AllborrowedComponent implements OnInit {
     due_date: false,
     return_date: false
   };
+  searchUser;
   constructor(private apiService: ApiserviceService) { }
 
   ngOnInit() {

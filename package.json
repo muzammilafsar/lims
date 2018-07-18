@@ -14,8 +14,10 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "^5.2.0",
+    "@angular/cli": "~1.7.1",
     "@angular/common": "^5.2.0",
     "@angular/compiler": "^5.2.0",
+    "@angular/compiler-cli": "^5.2.0",
     "@angular/core": "^5.2.0",
     "@angular/forms": "^5.2.0",
     "@angular/http": "^5.2.0",
@@ -24,14 +26,12 @@
     "@angular/router": "^5.2.0",
     "angular5-social-login": "^1.0.9",
     "core-js": "^2.4.1",
+    "express": "^4.16.3",
     "materialize-css": "^1.0.0-rc.1",
     "node-isbn": "^1.4.0",
     "rxjs": "^5.5.10",
-    "zone.js": "^0.8.19",
-    "@angular/cli": "~1.7.1",
-    "@angular/compiler-cli": "^5.2.0",
-    "typescript": "~2.5.3"
-
+    "typescript": "~2.5.3",
+    "zone.js": "^0.8.19"
   },
   "devDependencies": {
     "@angular/cli": "~1.7.1",

@@ -14,6 +14,7 @@ export class AddbookComponent implements OnInit {
   updateForm: FormGroup;
   updateid;
   searchTitle = '';
+  searchAuthor;
   addbtnDisable = false;
   delbtnDisable = false;
   editbtnDisable = false;

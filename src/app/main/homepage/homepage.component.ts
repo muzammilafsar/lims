@@ -16,8 +16,11 @@ export class HomepageComponent implements OnInit {
     tech: false,
     horror: false,
     bio: false,
-    history: false
+    history: false,
+    edu: false
   };
+  searchTitle;
+  searchAuthor;
   constructor(private apiService: ApiserviceService, private router: Router) { }
 
   ngOnInit() {
@@ -40,7 +43,8 @@ export class HomepageComponent implements OnInit {
     tech: false,
     horror: false,
     bio: false,
-    history: false
+    history: false,
+    edu: false
     };
     this.category[`${id}`] = true;
   }
